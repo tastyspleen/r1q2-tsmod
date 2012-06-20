@@ -674,6 +674,12 @@ vidmode_t vid_modes[] =
 	{1440,	900},
 	{1680,	1050},
 	{2560,	1920},	
+	{1280,  720},
+	{1280,  800},
+	{1366,  768},
+	{1920,  1080},
+	{1920,  1200},
+	{2560,  1600},
 };
 
 qboolean EXPORT VID_GetModeInfo( unsigned int *width, unsigned int *height, int mode )
