@@ -39,7 +39,8 @@ woven in by Terry Thorsen 1/2003.
 #include <stdlib.h>
 #include <string.h>
 #ifdef _WIN32
-#define ZEXPORT __cdecl
+#define ZLIB_WINAPI
+//#define ZEXPORT __cdecl
 #endif
 #include "zlib.h"
 #ifdef _WIN32

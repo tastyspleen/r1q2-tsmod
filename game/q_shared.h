@@ -31,7 +31,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <ctype.h>
 #ifndef NO_ZLIB
 #ifdef _WIN32
-#define ZEXPORT __cdecl
+#define ZLIB_WINAPI
+//#define ZEXPORT __cdecl
 #endif
 #include <zlib.h>
 #ifdef _WIN32
