@@ -1132,6 +1132,7 @@ void _winkey_changed (cvar_t *cvar, char *old, char *newv)
 		}
 		else
 		{
+			if (!cl_quietstartup->intvalue || developer->intvalue)
 			Com_Printf ("KeyboardHook installed - Windows key disabled.\n", LOG_CLIENT);
 		}
 	}
