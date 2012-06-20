@@ -1299,8 +1299,8 @@ static void MouseSpeedFunc( void *unused )
 
 	value = (float)atof(s_options_sensitivity_slider.buffer);
 
-	if (value < 2)
-		value = 2;
+	/*if (value < 2)
+		value = 2;*/
 
 	Cvar_SetValue( "sensitivity", value);
 }
