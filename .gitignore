@@ -1,0 +1,7 @@
+# visual studio
+build/
+*.ncb
+*.sln
+*.suo
+*.user
+*.vcproj
