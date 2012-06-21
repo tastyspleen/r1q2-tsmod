@@ -4073,7 +4073,7 @@ void CL_Synchronous_Frame (int msec)
 
 	if (cls.spamTime && cls.spamTime < cls.realtime)
 	{
-		Cbuf_AddText ("say \"" PRODUCTNAME " " VERSION " " __TIMESTAMP__ " " CPUSTRING " " BUILDSTRING " [http://r1ch.net/r1q2]\"\n");
+		Cbuf_AddText ("say \"" PRODUCTNAME " " VERSION " " __TIMESTAMP__ " " CPUSTRING " " BUILDSTRING " [http://www.r1ch.net/stuff/r1q2/]\"\n");
 		cls.lastSpamTime = cls.realtime;
 		cls.spamTime = 0;
 	}
@@ -4239,7 +4239,7 @@ void CL_Frame (int msec)
 			if (cls.spamTime && cls.spamTime < cls.realtime)
 			{
 				char buff[256];
-				Com_sprintf (buff, sizeof(buff), "say \"R1Q2 %s %s %s %s [http://r1ch.net/r1q2]\"\n", VERSION,
+				Com_sprintf (buff, sizeof(buff), "say \"R1Q2 %s %s %s %s [http://www.r1ch.net/stuff/r1q2/]\"\n", VERSION,
 					__TIMESTAMP__, CPUSTRING, BUILDSTRING
 				);
 				Cbuf_AddText (buff);
