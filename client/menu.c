@@ -2166,7 +2166,7 @@ static menuseparator_s	s_blankline;
 
 static void StartGame( void )
 {
-	if (!CM_MapWillLoad ("base1"))
+	if ((!CM_MapWillLoad ("maps/base1.bsp")) && (!CM_MapWillLoad ("maps/demo1.bsp")))
 	{
 		Com_Printf ("ERROR: Your Quake II installation is missing the single player data, you cannot start a single player game.\n", LOG_GENERAL);
 		M_PopMenu ();
