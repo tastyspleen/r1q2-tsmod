@@ -1652,6 +1652,7 @@ void SCR_UpdateScreen (void)
 #endif
 
 		//r1: only update console during load
+#ifndef CINEMATICS
 		if (!cl.refresh_prepped)
 		{
 			if (cls.key_dest != key_menu)
@@ -1660,7 +1661,7 @@ void SCR_UpdateScreen (void)
 			re.EndFrame();
 			return;
 		}
-
+#endif
 		if (scr_draw_loading == 2)
 		{	//  loading plaque over black screen
 			int		w, h;

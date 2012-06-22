@@ -199,8 +199,9 @@ Called when either the cinematic completes, or it is aborted
 void SCR_FinishCinematic (void)
 {
 	// tell the server to advance to the next map / cinematic
-	MSG_WriteByte (&cls.netchan.message, clc_stringcmd);
-	SZ_Print (&cls.netchan.message, va("nextserver %i\n", cl.servercount));
+	MSG_WriteByte (clc_stringcmd);
+	MSG_Print (va("nextserver %i\n", cl.servercount));
+	MSG_EndWriting (&cls.netchan.message);
 }
 
 //==========================================================================

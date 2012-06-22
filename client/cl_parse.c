@@ -579,11 +579,15 @@ qboolean CL_ParseServerData (void)
 
 	if (cl.playernum == -1)
 	{	// playing a cinematic or showing a pic, not a level
-		//SCR_PlayCinematic (str);
-		// tell the server to advance to the next map / cinematic
+#ifdef CINEMATICS
+		SCR_PlayCinematic (str);
+#endif
+	    // tell the server to advance to the next map / cinematic
+#ifndef CINEMATICS
 		MSG_WriteByte (clc_stringcmd);
 		MSG_Print (va("nextserver %i\n", cl.servercount));
 		MSG_EndWriting (&cls.netchan.message);
+#endif
 	}
 	else
 	{

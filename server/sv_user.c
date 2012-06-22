@@ -572,14 +572,14 @@ static void SV_New_f (void)
 
 			SV_AddConfigstrings ();
 			break;
-
+#ifndef CINEMATICS
 		case ss_pic:
 		case ss_cinematic:
 			MSG_BeginWriting (svc_stufftext);
 			MSG_WriteString (va("cmd begin %i\n", svs.spawncount));
 			SV_AddMessage (sv_client, true);
 			break;
-
+#endif
 		default:
 			break;
 	}
