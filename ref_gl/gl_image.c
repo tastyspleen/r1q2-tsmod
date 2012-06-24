@@ -20,6 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "gl_local.h"
 #include <png.h>
+#include <pnginfo.h>
 #include <jpeglib.h>
 
 image_t		gltextures[MAX_GLTEXTURES];
@@ -739,7 +740,7 @@ void LoadPNG (const char *name, byte **pic, int *width, int *height)
 		png_set_filler(png_ptr, 0xFF, PNG_FILLER_AFTER);
 
 	if ((info_ptr->color_type == PNG_COLOR_TYPE_GRAY) && info_ptr->bit_depth < 8)
-		png_set_gray_1_2_4_to_8(png_ptr);
+		png_set_expand_gray_1_2_4_to_8(png_ptr);
 
 	if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
 		png_set_tRNS_to_alpha(png_ptr);
