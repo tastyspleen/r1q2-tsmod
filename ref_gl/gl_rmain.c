@@ -2234,7 +2234,7 @@ unsigned r_rawpalette[256];
 
 void EXPORT R_SetPalette ( const unsigned char *palette)
 {
-	/*int		i;
+	int		i;
 
 	byte *rp = ( byte * ) r_rawpalette;
 
@@ -2258,7 +2258,7 @@ void EXPORT R_SetPalette ( const unsigned char *palette)
 			rp[i*4+3] = 0xff;
 		}
 	}
-	GL_SetTexturePalette( r_rawpalette );*/
+	//GL_SetTexturePalette( r_rawpalette );
 
 	qglClearColor (0,0,0,0);
 	qglClear (GL_COLOR_BUFFER_BIT);
