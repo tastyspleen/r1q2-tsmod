@@ -4280,6 +4280,11 @@ void CL_Frame (int msec)
 		// advance local effects for next frame
 		CL_RunDLights ();
 		CL_RunLightStyles ();
+		
+	#ifdef CINEMATICS
+		SCR_RunCinematic ();
+	#endif
+		
 		SCR_RunConsole ();
 	}
 		//cls.framecount++;

@@ -743,7 +743,7 @@ void CL_SendCmd_Synchronous (void)
 
 #ifdef CINEMATICS
 	if (cmd->buttons && cl.cinematictime > 0 && !cl.attractloop 
-		&& cls.realtime - cl.cinematictime > 1000)
+		&& cls.realtime > cl.cinematictime && cls.realtime - cl.cinematictime > 1000)
 	{	// skip the rest of the cinematic
 		SCR_FinishCinematic ();
 	}
@@ -849,7 +849,7 @@ void CL_SendCmd (void)
 
 #ifdef CINEMATICS
 	if (cmd->buttons && cl.cinematictime > 0 && !cl.attractloop 
-		&& cls.realtime - cl.cinematictime > 1000)
+		&& cls.realtime > cl.cinematictime && cls.realtime - cl.cinematictime > 1000)
 	{	// skip the rest of the cinematic
 		SCR_FinishCinematic ();
 	}
