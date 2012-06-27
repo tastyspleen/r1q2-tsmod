@@ -811,7 +811,7 @@ qboolean VID_LoadRefresh( char *name, char *errstr )
 	if ( ( reflib_library = LoadLibrary( name ) ) == 0 )
 	{
 		int lastError = GetLastError();
-		Com_Printf( "LoadLibrary(\"%s\") failed (GetLastError() = %d)\n", LOG_CLIENT, name, lastError);
+		//Com_Printf( "LoadLibrary(\"%s\") failed (GetLastError() = %d)\n", LOG_CLIENT, name, lastError);
 
 		if (lastError == 126)
 			strcpy (errstr, "file not found");
