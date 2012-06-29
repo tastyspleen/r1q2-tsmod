@@ -973,7 +973,7 @@ void CL_ParseTEnt (void)
 		switch (cl_railtrail->intvalue)
 		{
 			case 0:
-				CL_RailTrail (pos, pos2, 179);
+				CL_RailTrail (pos, pos2, 116);
 				break;
 			case 1:
 				CL_ParseLaser (0xf2f2f0f0, pos, pos2);
