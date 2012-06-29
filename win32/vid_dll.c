@@ -1041,10 +1041,10 @@ void VID_ReloadRefresh (void)
 		}
 
 		//r1ch: restart our sound/input devices as the window handle most likely changed
-		if (old_hwnd && cl_hwnd != old_hwnd)
+		/*if (old_hwnd && cl_hwnd != old_hwnd)
 			IN_Restart_f ();
 
-		old_hwnd = cl_hwnd;
+		old_hwnd = cl_hwnd;*/
 		//cls.disable_screen = false;
 		Con_CheckResize();
 	}
