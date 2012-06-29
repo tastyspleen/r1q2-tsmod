@@ -69,6 +69,8 @@ cvar_t		*scr_chathud_y;
 cvar_t		*scr_chathud_highlight;
 cvar_t		*scr_chathud_highlight_char;
 
+cvar_t		*vid_ref;
+
 typedef struct
 {
 	int		x1, y1, x2, y2;
@@ -1653,9 +1655,9 @@ void SCR_UpdateScreen (void)
 
 		//r1: only update console during load
 #ifdef CINEMATICS
-		if (!cl.refresh_prepped && cl.cinematictime == 0)
+		if (!cl.refresh_prepped && cl.cinematictime == 0 && strcmp(vid_ref->string, "soft") != 0) 
 #else
-		if (!cl.refresh_prepped)
+		if (!cl.refresh_prepped && strcmp(vid_ref->string, "soft") != 0)
 #endif
 		{
 			if (cls.key_dest != key_menu)
