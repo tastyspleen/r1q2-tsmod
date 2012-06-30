@@ -476,7 +476,8 @@ int CDAudio_Init(void)
 
 	Cmd_AddCommand ("cd", CD_f);
 
-	Com_Printf("CD Audio Initialized\n", LOG_CLIENT);
+	if (!cl_quietstartup->intvalue || developer->intvalue)
+		Com_Printf("CD Audio Initialized\n", LOG_CLIENT);
 
 	return 0;
 }

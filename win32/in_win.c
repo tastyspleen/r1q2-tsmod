@@ -1489,7 +1489,8 @@ void IN_StartupJoystick (void)
 	joy_avail = true; 
 	joy_advancedinit = false;
 
-	Com_Printf ("\njoystick detected\n\n", LOG_CLIENT); 
+	if (!cl_quietstartup->intvalue || developer->intvalue)
+		Com_Printf ("\njoystick detected\n\n", LOG_CLIENT); 
 }
 
 
