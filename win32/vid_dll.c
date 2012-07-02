@@ -401,8 +401,8 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		** this chunk of code theoretically only works under NT4 and Win98
 		** since this message doesn't exist under Win95
 		*/
-		if (ActiveApp && g_pMouse)
-			return TRUE;
+		/*if (ActiveApp && g_pMouse)
+			return TRUE;*/
 
 		if ( ( int16 ) HIWORD( wParam ) > 0 )
 		{
@@ -542,8 +542,8 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		{
 			int	temp;
 
-			if (g_pMouse)
-				break;
+			/*if (g_pMouse)
+				break;*/
 
 			temp = 0;
 
