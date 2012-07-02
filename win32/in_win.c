@@ -21,6 +21,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // 02/21/97 JCB Added extended DirectInput code to support external controllers.
 
 #include "../client/client.h"
+#include "..\client\qmenu.h"
 #include "winquake.h"
 
 extern	uint32	sys_msg_time;
@@ -742,7 +743,7 @@ void IN_ReadBufferedData( usercmd_t *cmd )
             case DIMOFS_Z:
 				if ( (int)didod[i].dwData > 0)
 				{
-					if (cls.key_dest == key_console || cls.state <= ca_connected)
+					if (cls.key_dest == key_console || cls.state <= ca_connected && !menu_key_binding_in_progress ())
 					{
 						Key_Event (K_PGUP, true, 10);
 						Key_Event (K_PGUP, false, 10);
@@ -761,7 +762,7 @@ void IN_ReadBufferedData( usercmd_t *cmd )
 				}
 				else if ((int)didod[i].dwData < 0)
 				{
-					if (cls.key_dest == key_console || cls.state <= ca_connected)
+					if (cls.key_dest == key_console || cls.state <= ca_connected && !menu_key_binding_in_progress ())
 					{
 						Key_Event (K_PGDN, true, 10);
 						Key_Event (K_PGDN, false, 10);
@@ -851,7 +852,7 @@ void IN_ReadImmediateData (usercmd_t *cmd)
 
 	if (dims2.lZ > 0)
 	{
-		if (cls.key_dest == key_console || cls.state <= ca_connected)
+		if (cls.key_dest == key_console || cls.state <= ca_connected && !menu_key_binding_in_progress ())
 		{
 			Key_Event (K_PGUP, true, 10);
 			Key_Event (K_PGUP, false, 10);
@@ -870,7 +871,7 @@ void IN_ReadImmediateData (usercmd_t *cmd)
 	}
 	else if (dims2.lZ < 0)
 	{
-		if (cls.key_dest == key_console || cls.state <= ca_connected)
+		if (cls.key_dest == key_console || cls.state <= ca_connected && !menu_key_binding_in_progress ())
 		{
 			Key_Event (K_PGDN, true, 10);
 			Key_Event (K_PGDN, false, 10);

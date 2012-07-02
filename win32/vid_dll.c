@@ -27,6 +27,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define _WIN32_WINNT 0x0400
 #include "resource.h"
 #include "..\client\client.h"
+#include "..\client\qmenu.h"
 #include "winquake.h"
 //#include "zmouse.h"
 
@@ -366,7 +367,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		if ( ( ( int ) wParam ) > 0 )
 		{
-			if (cls.key_dest == key_console || cls.state <= ca_connected) {
+			if (cls.key_dest == key_console || cls.state <= ca_connected && !menu_key_binding_in_progress ()) {
 				int i;
 				for (i = 0; i < 4; i++) {
 					Key_Event( K_PGUP, true, sys_msg_time );
@@ -379,7 +380,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		}
 		else
 		{
-			if (cls.key_dest == key_console || cls.state <= ca_connected) {
+			if (cls.key_dest == key_console || cls.state <= ca_connected && !menu_key_binding_in_progress ()) {
 				int i;
 				for (i = 0; i < 4; i++) {
 					Key_Event( K_PGDN, true, sys_msg_time );
@@ -405,7 +406,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 		if ( ( int16 ) HIWORD( wParam ) > 0 )
 		{
-			if (cls.key_dest == key_console || cls.state <= ca_connected) {
+			if (cls.key_dest == key_console || cls.state <= ca_connected && !menu_key_binding_in_progress ()) {
 				int i;
 				for (i = 0; i < 4; i++) {
 					Key_Event( K_PGUP, true, sys_msg_time );
@@ -418,7 +419,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		}
 		else
 		{
-			if (cls.key_dest == key_console || cls.state <= ca_connected) {
+			if (cls.key_dest == key_console || cls.state <= ca_connected && !menu_key_binding_in_progress ()) {
 				int i;
 				for (i = 0; i < 4; i++) {
 					Key_Event( K_PGDN, true, sys_msg_time );

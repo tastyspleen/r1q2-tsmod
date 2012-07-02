@@ -122,6 +122,8 @@ typedef struct
 
 qboolean Field_Key( menufield_s *field, int key );
 
+extern int menu_key_binding_in_progress();
+
 void	Menu_AddItem( menuframework_s *menu, void *item );
 void	Menu_AdjustCursor( menuframework_s *menu, int dir );
 void	Menu_Center( menuframework_s *menu );

@@ -589,6 +589,11 @@ KEYS MENU
 int				keys_cursor;
 static int		bind_grab;
 
+int	menu_key_binding_in_progress ()
+{
+		return bind_grab;
+}
+
 static menuframework_s	s_keys_menu;
 static menuaction_s		s_movement_action;
 static menuaction_s		s_actions_action;
