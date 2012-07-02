@@ -413,10 +413,9 @@ int GLimp_SetMode( unsigned int *pwidth, unsigned int *pheight, int mode, qboole
 				gl_state.fullscreen = false;
 				error = VID_CreateWindow (width, height, false);
 				if (error != VID_ERR_NONE)
-				{
-					error |= VID_ERR_FULLSCREEN_FAILED;
 					return error;
-				}
+				error = VID_ERR_FULLSCREEN_FAILED;
+				return error;
 			}
 			else
 			{
