@@ -727,23 +727,6 @@ void Con_DrawConsole (float frac)
 
 	len = (int)strlen(key_lines[edit_line]);
 
-	i = Com_sprintf (version, sizeof(version), PRODUCTNAMELOWER " " VERSION);
-
-	if (len >= (viddef.width * 0.125f) - (i+2))
-		offset = 20;
-	else
-		offset = 0;
-
-	for (x=i-1; x>=0 ; x--)
-		re.DrawChar (viddef.width-2-(i*8)+x*8, lines-12-offset, 128 + version[x] );
-
-	t = time (NULL);
-	today = localtime(&t);
-
-	i = (int)strftime (version, sizeof(version), "%H:%M:%S", today);
-	for (x=0 ; x<i ; x++)
-		re.DrawChar (viddef.width-66+x*8, lines-22-offset, 128 + version[x] );
-
 // draw the text
 	con.vislines = lines;
 	
@@ -829,6 +812,26 @@ void Con_DrawConsole (float frac)
 		for (i = 0; i < j; i++)
 			re.DrawChar ( (i+1)<<3, y, dlbar[i]);
 	}
+
+	i = Com_sprintf (version, sizeof(version), PRODUCTNAMELOWER " " VERSION);
+
+	if (len >= (viddef.width * 0.125f) - (i+2))
+		offset = 20;
+	else if	(cls.downloadposition && j >= (viddef.width * 0.125f) - (i+2))
+		offset = 10;
+	else
+		offset = 0;
+
+	for (x=i-1; x>=0 ; x--)
+		re.DrawChar (viddef.width-2-(i*8)+x*8, lines-12-offset, 128 + version[x] );
+
+	t = time (NULL);
+	today = localtime(&t);
+
+	i = (int)strftime (version, sizeof(version), "%H:%M:%S", today);
+	for (x=0 ; x<i ; x++)
+		re.DrawChar (viddef.width-66+x*8, lines-22-offset, 128 + version[x] );
+
 //ZOID
 
 // draw the input prompt, user text, and cursor if desired
