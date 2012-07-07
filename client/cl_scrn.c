@@ -501,14 +501,14 @@ void SCR_DrawChatHud (void)
 	int		i, j;
 
 	if (!scr_chathud_y->intvalue)
-		v = cl.refdef.height - (8 * (scr_chathud_lines->intvalue + 4));
+		v = cl.refdef.height - (8 * (scr_chathud_lines->intvalue + 7));
 	else
 		v = scr_chathud_y->intvalue;
 
 	for (i = chathud_index, j = 0; j <  scr_chathud_lines->intvalue; i++, j++)
 	{
 		for (x = 0; chathud_messages[i % scr_chathud_lines->intvalue][x] ; x++)
-			re.DrawChar ( (x+scr_chathud_x->intvalue)<<3, v, chathud_messages[i % scr_chathud_lines->intvalue][x]);
+			re.DrawChar ( (x+scr_chathud_x->intvalue+1)<<3, v, chathud_messages[i % scr_chathud_lines->intvalue][x]);
 
 		v += 8;
 	}

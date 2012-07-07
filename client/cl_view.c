@@ -728,7 +728,7 @@ void V_RenderView(void)
 		len = Com_sprintf (buff, sizeof(buff), "%d", fps);
 		for (x = 0; x < len; x++)
 		{
-			re.DrawChar (viddef.width-26+x*8+cl_drawfps_x->intvalue, viddef.height - 16 + cl_drawfps_y->intvalue, 128 + buff[x]);
+			re.DrawChar (viddef.width-32+x*8+cl_drawfps_x->intvalue, viddef.height - 16 + cl_drawfps_y->intvalue, 128 + buff[x]);
 		}
 	}
 
@@ -743,7 +743,7 @@ void V_RenderView(void)
 		len = Com_sprintf (buff, sizeof(buff), "%d:%.2d", mins, secs);
 		for (x = 0; x < len; x++)
 		{
-			re.DrawChar (x * 8 + cl_drawmaptime_x->intvalue, viddef.height - 8 + cl_drawmaptime_y->intvalue, 128 + buff[x]);
+			re.DrawChar (8 + x * 8 + cl_drawmaptime_x->intvalue, viddef.height - 16 + cl_drawmaptime_y->intvalue, 128 + buff[x]);
 		}
 	}
 
