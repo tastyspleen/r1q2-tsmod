@@ -1246,10 +1246,10 @@ void IN_Init (void)
 	// mouse variables
 	m_filter				= Cvar_Get ("m_filter",					"0",		0);
 
-	m_winxp_fix				= Cvar_Get ("m_fixaccel",				os_winxp ? "1" : "0",		0);
+	m_winxp_fix				= Cvar_Get ("m_fixaccel",				os_winxp ? "1" : "0",		CVAR_R1Q2_ARCHIVE);
 
 	m_show					= Cvar_Get ("m_show",					"0",		0);
-	m_directinput			= Cvar_Get ("m_directinput",			"0",		0);
+	m_directinput			= Cvar_Get ("m_directinput",			"0",		CVAR_R1Q2_ARCHIVE);
     in_mouse				= Cvar_Get ("in_mouse",					"1",		0);
 
 	in_dinputkeyboard		= Cvar_Get ("in_dinputkeyboard",		"0",		0);

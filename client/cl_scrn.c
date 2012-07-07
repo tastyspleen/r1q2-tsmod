@@ -676,7 +676,7 @@ void SCR_Init (void)
 	scr_graphshift = Cvar_Get ("graphshift", "0", 0);
 	scr_drawall = Cvar_Get ("scr_drawall", "0", 0);
 
-	scr_chathud = Cvar_Get ("scr_chathud", "0", 0);
+	scr_chathud = Cvar_Get ("scr_chathud", "0", CVAR_R1Q2_ARCHIVE);
 	scr_chathud_lines = Cvar_Get ("scr_chathud_lines", "4", 0);
 	scr_chathud_colored = Cvar_Get ("scr_chathud_colored", "0", 0);
 	scr_chathud_ignore_duplicates = Cvar_Get ("scr_chathud_ignore_duplicates", "1", 0);

@@ -1567,8 +1567,8 @@ extern cvar_t *in_joystick;
 
 
 static menuframework_s	s_r1q2_options_menu;
-static menuseparator_s	s_r1q2_warning;
-static menuseparator_s	s_r1q2_warning2;
+//static menuseparator_s	s_r1q2_warning;
+//static menuseparator_s	s_r1q2_warning2;
 
 #ifdef _WIN32
 static menulist_s		s_r1q2_dinput;
@@ -1579,6 +1579,9 @@ static menulist_s		s_r1q2_defer;
 static menulist_s		s_r1q2_async;
 static menulist_s		s_r1q2_autorecord;
 static menulist_s		s_r1q2_xaniarail;
+static menulist_s		s_r1q2_chathud;
+static menulist_s		s_r1q2_maptime;
+static menulist_s		s_r1q2_fps;
 
 static menuframework_s	s_options_menu;
 static menuaction_s		s_options_r1q2_action;
@@ -1652,7 +1655,18 @@ static void RailTrailFunc (void *unused)
 	Cvar_SetValue ("cl_railtrail", (float)s_r1q2_xaniarail.curvalue);
 }
 
-
+static void ChathudFunc (void *unused)
+{
+	Cvar_SetValue ("scr_chathud", (float)s_r1q2_chathud.curvalue);
+}
+static void MapTimeFunc (void *unused)
+{
+	Cvar_SetValue ("cl_drawmaptime", (float)s_r1q2_maptime.curvalue);
+}
+static void FPSFunc (void *unused)
+{
+	Cvar_SetValue ("cl_drawfps", (float)s_r1q2_fps.curvalue);
+}
 static void R1Q2_MenuInit (void)
 {
 	static const char *yesno_names[] =
@@ -1691,7 +1705,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_options_menu.nitems = 0;
 
-	s_r1q2_warning.generic.type = MTYPE_SEPARATOR;
+	/*s_r1q2_warning.generic.type = MTYPE_SEPARATOR;
 	s_r1q2_warning.generic.name = "WARNING: Settings here will not be saved. Any settings";
 	s_r1q2_warning.generic.x    = 160;
 	s_r1q2_warning.generic.y	 = 0;
@@ -1699,7 +1713,7 @@ static void R1Q2_MenuInit (void)
 	s_r1q2_warning2.generic.type = MTYPE_SEPARATOR;
 	s_r1q2_warning2.generic.name = "that you wish to keep will need adding to a config.";
 	s_r1q2_warning2.generic.x    = 160;
-	s_r1q2_warning2.generic.y	 = 10;
+	s_r1q2_warning2.generic.y	 = 10;*/
 
 #ifdef _WIN32
 	s_r1q2_dinput.generic.type = MTYPE_SPINCONTROL;
@@ -1751,6 +1765,30 @@ static void R1Q2_MenuInit (void)
 	s_r1q2_xaniarail.itemnames = xanianames;
 	s_r1q2_xaniarail.curvalue = (int)ClampCvar (0, 5, Cvar_VariableValue ("cl_railtrail"));
 
+	s_r1q2_chathud.generic.type = MTYPE_SPINCONTROL;
+	s_r1q2_chathud.generic.x	= 0;
+	s_r1q2_chathud.generic.y	= 110;
+	s_r1q2_chathud.generic.name	= "chathud";
+	s_r1q2_chathud.generic.callback = ChathudFunc;
+	s_r1q2_chathud.itemnames = yesno_names;
+	s_r1q2_chathud.curvalue = (int)ClampCvar (0, 1, Cvar_VariableValue ("scr_chathud"));
+
+	s_r1q2_maptime.generic.type = MTYPE_SPINCONTROL;
+	s_r1q2_maptime.generic.x	= 0;
+	s_r1q2_maptime.generic.y	= 120;
+	s_r1q2_maptime.generic.name	= "map timer";
+	s_r1q2_maptime.generic.callback = MapTimeFunc;
+	s_r1q2_maptime.itemnames = yesno_names;
+	s_r1q2_maptime.curvalue = (int)ClampCvar (0, 1, Cvar_VariableValue ("cl_drawmaptime"));
+
+	s_r1q2_fps.generic.type = MTYPE_SPINCONTROL;
+	s_r1q2_fps.generic.x	= 0;
+	s_r1q2_fps.generic.y	= 130;
+	s_r1q2_fps.generic.name	= "fps display";
+	s_r1q2_fps.generic.callback = FPSFunc;
+	s_r1q2_fps.itemnames = yesno_names;
+	s_r1q2_fps.curvalue = (int)ClampCvar (0, 1, Cvar_VariableValue ("cl_drawfps"));
+
 /*
 	s_options_invertmouse_box.generic.type = MTYPE_SPINCONTROL;
 	s_options_invertmouse_box.generic.x	= 0;
@@ -1788,8 +1826,8 @@ static void R1Q2_MenuInit (void)
 	s_options_crosshair_box.itemnames = crosshair_names;
 */
 
-	Menu_AddItem (&s_r1q2_options_menu, (void *)&s_r1q2_warning);
-	Menu_AddItem (&s_r1q2_options_menu, (void *)&s_r1q2_warning2);
+	//Menu_AddItem (&s_r1q2_options_menu, (void *)&s_r1q2_warning);
+	//Menu_AddItem (&s_r1q2_options_menu, (void *)&s_r1q2_warning2);
 
 #ifdef _WIN32
 	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_dinput );
@@ -1800,6 +1838,10 @@ static void R1Q2_MenuInit (void)
 	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_async );
 	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_autorecord );
 	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_xaniarail );
+
+	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_chathud );
+	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_maptime );
+	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_fps );
 }
 
 static void R1Q2_MenuDraw (void)

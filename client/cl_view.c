@@ -880,15 +880,15 @@ void V_Init (void)
 
 	cl_stats = Cvar_Get ("cl_stats", "0", 0);
 
-	cl_drawfps = Cvar_Get ("cl_drawfps", "0", 0);
+	cl_drawfps = Cvar_Get ("cl_drawfps", "0", CVAR_R1Q2_ARCHIVE);
 	cl_drawfps_x = Cvar_Get ("cl_drawfps_x", "0", 0);
 	cl_drawfps_y = Cvar_Get ("cl_drawfps_y", "0", 0);
 
-	cl_stfu_ilkhan = Cvar_Get ("cl_drawmaptime", "0", 0);
+	cl_stfu_ilkhan = Cvar_Get ("cl_drawmaptime", "0", CVAR_R1Q2_ARCHIVE);
 	cl_drawmaptime_x = Cvar_Get ("cl_drawmaptime_x", "0", 0);
 	cl_drawmaptime_y = Cvar_Get ("cl_drawmaptime_y", "0", 0);
 
-	cl_defermodels = Cvar_Get ("cl_defermodels", "1", 0);
+	cl_defermodels = Cvar_Get ("cl_defermodels", "1", CVAR_R1Q2_ARCHIVE);
 
 	scr_crosshair_x = Cvar_Get ("scr_crosshair_x", "0", 0);
 	scr_crosshair_y = Cvar_Get ("scr_crosshair_y", "0", 0);

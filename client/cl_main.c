@@ -3547,7 +3547,7 @@ void CL_InitLocal (void)
 	cl_maxfps = Cvar_Get ("cl_maxfps", "60", CVAR_ARCHIVE);
 	cl_maxfps->changed = _maxfps_changed;
 
-	cl_async = Cvar_Get ("cl_async", "1", 0);
+	cl_async = Cvar_Get ("cl_async", "1", CVAR_R1Q2_ARCHIVE);
 	cl_async->changed = _async_changed;
 
 	cl_upspeed = Cvar_Get ("cl_upspeed", "200", 0);
@@ -3614,9 +3614,9 @@ void CL_InitLocal (void)
 	cl_instantpacket = Cvar_Get ("cl_instantpacket", "1", 0);
 	cl_nolerp = Cvar_Get ("cl_nolerp", "0", 0);
 	cl_instantack = Cvar_Get ("cl_instantack", "0", 0);
-	cl_autorecord = Cvar_Get ("cl_autorecord", "0", 0);
+	cl_autorecord = Cvar_Get ("cl_autorecord", "0", CVAR_R1Q2_ARCHIVE);
 
-	cl_railtrail = Cvar_Get ("cl_railtrail", "0", 0);
+	cl_railtrail = Cvar_Get ("cl_railtrail", "0", CVAR_R1Q2_ARCHIVE);
 	cl_railtrail->changed = _railtrail_changed;
 
 	//misc for testing
