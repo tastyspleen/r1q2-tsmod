@@ -700,14 +700,16 @@ Appends lines containing "set variable value" for all variables
 with the archive flag set to true.
 ============
 */
-void Cvar_WriteVariables (const char *path)
+void Cvar_WriteVariables (const char *path, const char *r1q2_path)
 {
 	const cvar_t	*var;
 	char	buffer[1024];
 	FILE	*f;
+	FILE	*r1q2_f;
 
 	f = fopen (path, "a");
-	if (f)
+	r1q2_f = fopen (r1q2_path, "a");
+	if (f && r1q2_f)
 	{
 		for (var = cvar_vars ; var ; var = var->next)
 		{
@@ -716,8 +718,14 @@ void Cvar_WriteVariables (const char *path)
 				Com_sprintf (buffer, sizeof(buffer), "set %s \"%s\"\n", var->name, var->string);
 				fprintf (f, "%s", buffer);
 			}
+			else if (var->flags & CVAR_R1Q2_ARCHIVE)
+			{
+				Com_sprintf (buffer, sizeof(buffer), "set %s \"%s\"\n", var->name, var->string);
+				fprintf (r1q2_f, "%s", buffer);
+			}
 		}
 		fclose (f);
+		fclose (r1q2_f);
 	}
 }
 
@@ -767,7 +775,7 @@ static void Cvar_List_f (void)
 
 		if (!argLen)
 		{
-			if (var->flags & CVAR_ARCHIVE)
+			if (var->flags & CVAR_ARCHIVE || CVAR_R1Q2_ARCHIVE)
 				Com_Printf ("*", LOG_GENERAL);
 			else
 				Com_Printf (" ", LOG_GENERAL);

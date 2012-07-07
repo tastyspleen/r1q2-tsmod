@@ -689,7 +689,7 @@ qboolean Cvar_Command (void);
 // command.  Returns true if the command was a variable reference that
 // was handled. (print or change)
 
-void 	Cvar_WriteVariables (const char *path);
+void 	Cvar_WriteVariables (const char *path, const char *r1q2_path);
 // appends lines containing "set variable value" for all variables
 // with the archive flag set to true.
 
