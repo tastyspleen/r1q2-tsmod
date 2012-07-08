@@ -280,7 +280,7 @@ Call before entering a new level, or after changing dlls
 void CL_PrepRefresh (void)
 {
 	char		mapname[MAX_QPATH];
-	
+	char		name[MAX_QPATH];
 	int			i;
 	int			maxclients;
 
@@ -382,8 +382,10 @@ void CL_PrepRefresh (void)
 					cl.model_clip[i] = NULL;
 			}
 
-			Com_Printf ("%s                         \r", LOG_CLIENT, cl.configstrings[CS_MODELS+i]); 
-			//SCR_UpdateScreen ();
+			strcpy (name, cl.configstrings[CS_MODELS+i]);
+			name[37] = 0;	// never go beyond one line
+			Com_Printf ("%s\r", LOG_CLIENT, name); 
+			SCR_UpdateScreen ();
 			Sys_SendKeyEvents ();
 		}
 	}
