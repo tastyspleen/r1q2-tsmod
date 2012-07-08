@@ -3632,6 +3632,7 @@ static char dmoptions_statusbar[128];
 
 static menuframework_s s_dmoptions_menu;
 
+static menuseparator_s	s_dmoptions_title;
 static menulist_s	s_friendlyfire_box;
 static menulist_s	s_falls_box;
 static menulist_s	s_weapons_stay_box;
@@ -3814,9 +3815,14 @@ static void DMOptions_MenuInit( void )
 	s_dmoptions_menu.x = (int)(viddef.width * 0.50f);
 	s_dmoptions_menu.nitems = 0;
 
+	s_dmoptions_title.generic.type = MTYPE_SEPARATOR;
+	s_dmoptions_title.generic.name = "Deathmatch Flags";
+	s_dmoptions_title.generic.x    = 48;
+	s_dmoptions_title.generic.y	 = y;
+	
 	s_falls_box.generic.type = MTYPE_SPINCONTROL;
 	s_falls_box.generic.x	= 0;
-	s_falls_box.generic.y	= y;
+	s_falls_box.generic.y	= y += 20;
 	s_falls_box.generic.name	= "falling damage";
 	s_falls_box.generic.callback = DMFlagCallback;
 	s_falls_box.itemnames = yes_no_names;
@@ -3973,6 +3979,7 @@ static void DMOptions_MenuInit( void )
 //ROGUE
 //============
 
+	Menu_AddItem( &s_dmoptions_menu, &s_dmoptions_title );
 	Menu_AddItem( &s_dmoptions_menu, &s_falls_box );
 	Menu_AddItem( &s_dmoptions_menu, &s_weapons_stay_box );
 	Menu_AddItem( &s_dmoptions_menu, &s_instant_powerups_box );
@@ -4002,6 +4009,10 @@ static void DMOptions_MenuInit( void )
 //=======
 
 	Menu_Center( &s_dmoptions_menu );
+
+	// skip over title
+	if (s_dmoptions_menu.cursor == 0)
+		s_dmoptions_menu.cursor = 1;
 
 	// set the original dmflags statusbar
 	DMFlagCallback( 0 );
