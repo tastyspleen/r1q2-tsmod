@@ -601,7 +601,7 @@ static menuaction_s		s_weapons_action;
 
 static void Keys_MenuDraw (void)
 {
-	M_Banner( "m_banner_options" );
+	M_Banner( "m_banner_customize" );
 
 	Menu_AdjustCursor( &s_keys_menu, 1 );
 	Menu_Draw( &s_keys_menu );
@@ -815,6 +815,7 @@ static void Movement_MenuInit( void )
 	int i = 0;
 
 	s_movement_menu.x = (int)(viddef.width * 0.50f);
+	s_movement_menu.y = viddef.height / 2 - 58;
 	s_movement_menu.nitems = 0;
 	s_movement_menu.cursordraw = KeyCursorDrawFunc;
 	
@@ -955,11 +956,11 @@ static void Movement_MenuInit( void )
 	Menu_AddItem( &s_movement_menu, ( void * ) &s_movement_move_down_action );
 	
 	Menu_SetStatusBar( &s_movement_menu, "enter to change, backspace to clear" );
-	Menu_Center( &s_movement_menu );
 }
 
 static void Movement_MenuDraw (void)
 {
+	M_Banner( "m_banner_customize" );
 	Menu_AdjustCursor( &s_movement_menu, 1 );
 	Menu_Draw( &s_movement_menu );
 }
@@ -1104,6 +1105,7 @@ static void Actions_MenuInit( void )
 	int i = 0;
 
 	s_actions_menu.x = (int)(viddef.width * 0.50f);
+	s_actions_menu.y = viddef.height / 2 - 58;
 	s_actions_menu.nitems = 0;
 	s_actions_menu.cursordraw = KeyCursorDrawFunc;
 
@@ -1262,11 +1264,11 @@ static void Actions_MenuInit( void )
 	Menu_AddItem( &s_actions_menu, ( void * ) &s_actions_point_action );
 
 	Menu_SetStatusBar( &s_actions_menu, "enter to change, backspace to clear" );
-	Menu_Center( &s_actions_menu );
 }
 
 static void Actions_MenuDraw (void)
 {
+	M_Banner( "m_banner_customize" );
 	Menu_AdjustCursor( &s_actions_menu, 1 );
 	Menu_Draw( &s_actions_menu );
 }
@@ -1399,6 +1401,7 @@ static void Weapons_MenuInit( void )
 	int i = 0;
 
 	s_weapons_menu.x = (int)(viddef.width * 0.50f);
+	s_weapons_menu.y = viddef.height / 2 - 58;
 	s_weapons_menu.nitems = 0;
 	s_weapons_menu.cursordraw = KeyCursorDrawFunc;
 
@@ -1503,11 +1506,11 @@ static void Weapons_MenuInit( void )
 	Menu_AddItem( &s_weapons_menu, ( void * ) &s_weapons_grenades_action );
 	
 	Menu_SetStatusBar( &s_weapons_menu, "enter to change, backspace to clear" );
-	Menu_Center( &s_weapons_menu );
 }
 
 static void Weapons_MenuDraw (void)
 {
+	M_Banner( "m_banner_customize" );
 	Menu_AdjustCursor( &s_weapons_menu, 1 );
 	Menu_Draw( &s_weapons_menu );
 }
@@ -1718,7 +1721,7 @@ static void R1Q2_MenuInit (void)
 #ifdef _WIN32
 	s_r1q2_dinput.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_dinput.generic.x	= 0;
-	s_r1q2_dinput.generic.y	= 30;
+	s_r1q2_dinput.generic.y	= 0;
 	s_r1q2_dinput.generic.name	= "directinput mouse";
 	s_r1q2_dinput.generic.callback = DirectInputFunc;
 	s_r1q2_dinput.itemnames = dinputnames;
@@ -1726,7 +1729,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_winxp.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_winxp.generic.x	= 0;
-	s_r1q2_winxp.generic.y	= 40;
+	s_r1q2_winxp.generic.y	= 10;
 	s_r1q2_winxp.generic.name	= "xp mouse acceleration fix";
 	s_r1q2_winxp.generic.callback = AccelFixFunc;
 	s_r1q2_winxp.itemnames = yesno_names;
@@ -1735,7 +1738,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_defer.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_defer.generic.x	= 0;
-	s_r1q2_defer.generic.y	= 60;
+	s_r1q2_defer.generic.y	= 30;
 	s_r1q2_defer.generic.name	= "defer model loading";
 	s_r1q2_defer.generic.callback = DeferFunc;
 	s_r1q2_defer.itemnames = yesno_names;
@@ -1743,7 +1746,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_async.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_async.generic.x	= 0;
-	s_r1q2_async.generic.y	= 70;
+	s_r1q2_async.generic.y	= 40;
 	s_r1q2_async.generic.name	= "asynchronous net/fps";
 	s_r1q2_async.generic.callback = AsyncFunc;
 	s_r1q2_async.itemnames = yesno_names;
@@ -1751,7 +1754,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_autorecord.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_autorecord.generic.x	= 0;
-	s_r1q2_autorecord.generic.y	= 80;
+	s_r1q2_autorecord.generic.y	= 50;
 	s_r1q2_autorecord.generic.name	= "automatic demo record";
 	s_r1q2_autorecord.generic.callback = AutoFunc;
 	s_r1q2_autorecord.itemnames = yesno_names;
@@ -1759,7 +1762,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_xaniarail.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_xaniarail.generic.x	= 0;
-	s_r1q2_xaniarail.generic.y	= 90;
+	s_r1q2_xaniarail.generic.y	= 60;
 	s_r1q2_xaniarail.generic.name	= "\"xania\" railgun trail";
 	s_r1q2_xaniarail.generic.callback = RailTrailFunc;
 	s_r1q2_xaniarail.itemnames = xanianames;
@@ -1767,7 +1770,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_chathud.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_chathud.generic.x	= 0;
-	s_r1q2_chathud.generic.y	= 110;
+	s_r1q2_chathud.generic.y	= 80;
 	s_r1q2_chathud.generic.name	= "chathud";
 	s_r1q2_chathud.generic.callback = ChathudFunc;
 	s_r1q2_chathud.itemnames = yesno_names;
@@ -1775,7 +1778,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_maptime.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_maptime.generic.x	= 0;
-	s_r1q2_maptime.generic.y	= 120;
+	s_r1q2_maptime.generic.y	= 90;
 	s_r1q2_maptime.generic.name	= "map timer";
 	s_r1q2_maptime.generic.callback = MapTimeFunc;
 	s_r1q2_maptime.itemnames = yesno_names;
@@ -1783,7 +1786,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_fps.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_fps.generic.x	= 0;
-	s_r1q2_fps.generic.y	= 130;
+	s_r1q2_fps.generic.y	= 100;
 	s_r1q2_fps.generic.name	= "fps display";
 	s_r1q2_fps.generic.callback = FPSFunc;
 	s_r1q2_fps.itemnames = yesno_names;
@@ -3480,6 +3483,7 @@ static void StartServer_MenuInit( void )
 	** initialize the menu stuff
 	*/
 	s_startserver_menu.x = (int)(viddef.width * 0.50f);
+	s_startserver_menu.y = viddef.height / 2 - 58;
 	s_startserver_menu.nitems = 0;
 
 	s_startmap_list.generic.type = MTYPE_SPINCONTROL;
@@ -3580,7 +3584,7 @@ static void StartServer_MenuInit( void )
 	Menu_AddItem( &s_startserver_menu, &s_startserver_dmoptions_action );
 	Menu_AddItem( &s_startserver_menu, &s_startserver_start_action );
 
-	Menu_Center( &s_startserver_menu );
+	//Menu_Center( &s_startserver_menu );
 
 	// call this now to set proper inital state
 	RulesChangeFunc ( NULL );
@@ -3588,6 +3592,7 @@ static void StartServer_MenuInit( void )
 
 static void StartServer_MenuDraw(void)
 {
+	M_Banner( "m_banner_start_server" );
 	Menu_Draw( &s_startserver_menu );
 }
 
