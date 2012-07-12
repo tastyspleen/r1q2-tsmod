@@ -618,6 +618,11 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 #endif
+	
+	case WM_PALETTECHANGED:
+		refresh_palette = true;
+		break;
+	
 	default:	// pass all unhandled messages to DefWindowProc
         return DefWindowProc (hWnd, uMsg, wParam, lParam);
     }

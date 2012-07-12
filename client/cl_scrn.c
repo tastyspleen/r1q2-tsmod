@@ -38,6 +38,7 @@ float		scr_con_current;	// aproaches scr_conlines at scr_conspeed
 float		scr_conlines;		// 0.0 to 1.0 lines of console to display
 
 qboolean	scr_initialized;		// ready to draw
+qboolean	refresh_palette;
 
 int			scr_draw_loading;
 
@@ -1717,10 +1718,17 @@ void SCR_UpdateScreen (void)
 
 #ifdef CINEMATICS
 			// make sure the game palette is active
-			if (cl.cinematicpalette_active)
+			if (cl.cinematicpalette_active || refresh_palette)
 			{
 				re.CinematicSetPalette(NULL);
 				cl.cinematicpalette_active = false;
+				refresh_palette = false;
+			}
+#else
+			if (refresh_palette)
+			{
+				re.CinematicSetPalette(NULL);
+				refresh_palette = false;
 			}
 #endif
 			// do 3D refresh drawing, and then update the screen

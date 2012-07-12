@@ -521,6 +521,7 @@ extern	entity_state_t	cl_parse_entities[MAX_PARSE_ENTITIES];
 //=============================================================================
 
 extern	qboolean os_winxp;
+extern	qboolean refresh_palette;
 
 extern	netadr_t	net_from;
 extern	sizebuf_t	net_message;
