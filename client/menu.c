@@ -1771,7 +1771,7 @@ static void R1Q2_MenuInit (void)
 	s_r1q2_chathud.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_chathud.generic.x	= 0;
 	s_r1q2_chathud.generic.y	= 80;
-	s_r1q2_chathud.generic.name	= "chathud";
+	s_r1q2_chathud.generic.name	= "chat hud";
 	s_r1q2_chathud.generic.callback = ChathudFunc;
 	s_r1q2_chathud.itemnames = yesno_names;
 	s_r1q2_chathud.curvalue = (int)ClampCvar (0, 1, Cvar_VariableValue ("scr_chathud"));
