@@ -4376,6 +4376,16 @@ void CL_Init (void)
 
 	FS_ExecConfig ("postinit.cfg");
 	Cbuf_Execute ();
+	
+	if (strcmp(name->string, "Player") == 0)
+	{
+		int random_number;
+		char buffer[8];
+		random_number = randomMT () % 1000;
+	    sprintf(buffer, "%03d", random_number);
+    	strcat(name->string, " ");
+		Cvar_Set("name", strcat(name->string, buffer));
+	}
 }
 
 
