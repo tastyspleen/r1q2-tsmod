@@ -583,12 +583,16 @@ V_RenderView
 
 ==================
 */
+static const float standardRatio = 4.0f/3.0f;
+
 #ifdef CL_STEREO_SUPPORT
 void V_RenderView( float stereo_separation )
 #else
 void V_RenderView(void)
 #endif
 {
+	float currentRatio;
+
 	if (cls.state != ca_active)
 		return;
 
@@ -654,6 +658,17 @@ void V_RenderView(void)
 		cl.refdef.y = scr_vrect.y;
 		cl.refdef.width = scr_vrect.width;
 		cl.refdef.height = scr_vrect.height;
+		
+		// adjust fov for wide aspect ratio (from AprQ2)
+		currentRatio = (float)cl.refdef.width/(float)cl.refdef.height;
+		if (cl_wsfov->intvalue && currentRatio > standardRatio)
+		{
+			cl.refdef.fov_y = CalcFov(cl.refdef.fov_x, cl.refdef.width * (standardRatio / currentRatio), cl.refdef.height);
+			cl.refdef.fov_x = CalcFov(cl.refdef.fov_y, cl.refdef.height, cl.refdef.width);
+		}
+		else
+			cl.refdef.fov_y = CalcFov(cl.refdef.fov_x, cl.refdef.width, cl.refdef.height);
+				
 		cl.refdef.fov_y = CalcFov (cl.refdef.fov_x, cl.refdef.width, cl.refdef.height);
 		cl.refdef.time = cl.time * 0.001f;
 

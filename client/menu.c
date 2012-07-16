@@ -1581,6 +1581,7 @@ static menulist_s		s_r1q2_winxp;
 static menulist_s		s_r1q2_defer;
 static menulist_s		s_r1q2_async;
 static menulist_s		s_r1q2_autorecord;
+static menulist_s		s_r1q2_fov;
 static menulist_s		s_r1q2_xaniarail;
 static menulist_s		s_r1q2_chathud;
 static menulist_s		s_r1q2_maptime;
@@ -1653,6 +1654,10 @@ static void AutoFunc (void *unused)
 	Cvar_SetValue ("cl_autorecord", (float)s_r1q2_autorecord.curvalue);
 }
 
+static void FovFunc (void *unused)
+{
+	Cvar_SetValue ("cl_wsfov", (float)s_r1q2_fov.curvalue);
+}
 static void RailTrailFunc (void *unused)
 {
 	Cvar_SetValue ("cl_railtrail", (float)s_r1q2_xaniarail.curvalue);
@@ -1760,9 +1765,17 @@ static void R1Q2_MenuInit (void)
 	s_r1q2_autorecord.itemnames = yesno_names;
 	s_r1q2_autorecord.curvalue = (int)ClampCvar (0, 1, Cvar_VariableValue ("cl_autorecord"));
 
+	s_r1q2_fov.generic.type = MTYPE_SPINCONTROL;
+	s_r1q2_fov.generic.x	= 0;
+	s_r1q2_fov.generic.y	= 60;
+	s_r1q2_fov.generic.name	= "widescreen fov adjust";
+	s_r1q2_fov.generic.callback = FovFunc;
+	s_r1q2_fov.itemnames = yesno_names;
+	s_r1q2_fov.curvalue = (int)ClampCvar (0, 1, Cvar_VariableValue ("cl_wsfov"));
+
 	s_r1q2_xaniarail.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_xaniarail.generic.x	= 0;
-	s_r1q2_xaniarail.generic.y	= 60;
+	s_r1q2_xaniarail.generic.y	= 70;
 	s_r1q2_xaniarail.generic.name	= "\"xania\" railgun trail";
 	s_r1q2_xaniarail.generic.callback = RailTrailFunc;
 	s_r1q2_xaniarail.itemnames = xanianames;
@@ -1770,7 +1783,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_chathud.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_chathud.generic.x	= 0;
-	s_r1q2_chathud.generic.y	= 80;
+	s_r1q2_chathud.generic.y	= 90;
 	s_r1q2_chathud.generic.name	= "chat hud";
 	s_r1q2_chathud.generic.callback = ChathudFunc;
 	s_r1q2_chathud.itemnames = yesno_names;
@@ -1778,7 +1791,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_maptime.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_maptime.generic.x	= 0;
-	s_r1q2_maptime.generic.y	= 90;
+	s_r1q2_maptime.generic.y	= 100;
 	s_r1q2_maptime.generic.name	= "map timer";
 	s_r1q2_maptime.generic.callback = MapTimeFunc;
 	s_r1q2_maptime.itemnames = yesno_names;
@@ -1786,7 +1799,7 @@ static void R1Q2_MenuInit (void)
 
 	s_r1q2_fps.generic.type = MTYPE_SPINCONTROL;
 	s_r1q2_fps.generic.x	= 0;
-	s_r1q2_fps.generic.y	= 100;
+	s_r1q2_fps.generic.y	= 110;
 	s_r1q2_fps.generic.name	= "fps display";
 	s_r1q2_fps.generic.callback = FPSFunc;
 	s_r1q2_fps.itemnames = yesno_names;
@@ -1840,6 +1853,7 @@ static void R1Q2_MenuInit (void)
 	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_defer );
 	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_async );
 	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_autorecord );
+	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_fov );
 	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_xaniarail );
 
 	Menu_AddItem( &s_r1q2_options_menu, ( void * ) &s_r1q2_chathud );

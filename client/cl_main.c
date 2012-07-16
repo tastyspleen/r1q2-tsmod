@@ -144,6 +144,8 @@ cvar_t	*cl_nolerp;
 cvar_t	*cl_instantack;
 cvar_t	*cl_autorecord;
 
+cvar_t	*cl_wsfov;
+
 cvar_t	*cl_railtrail;
 cvar_t	*cl_test = &uninitialized_cvar;
 cvar_t	*cl_test2;
@@ -3615,6 +3617,8 @@ void CL_InitLocal (void)
 	cl_nolerp = Cvar_Get ("cl_nolerp", "0", 0);
 	cl_instantack = Cvar_Get ("cl_instantack", "0", 0);
 	cl_autorecord = Cvar_Get ("cl_autorecord", "0", CVAR_R1Q2_ARCHIVE);
+
+	cl_wsfov = Cvar_Get ("cl_wsfov", "1", CVAR_R1Q2_ARCHIVE);
 
 	cl_railtrail = Cvar_Get ("cl_railtrail", "0", CVAR_R1Q2_ARCHIVE);
 	cl_railtrail->changed = _railtrail_changed;

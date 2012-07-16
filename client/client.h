@@ -486,6 +486,7 @@ extern	cvar_t	*cl_default_location;
 extern	cvar_t	*cl_player_updates;
 
 extern	cvar_t	*fov;
+extern	cvar_t	*cl_wsfov;
 
 extern	cvar_t	*vid_fullscreen;
 
