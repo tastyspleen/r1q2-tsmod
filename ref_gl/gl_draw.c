@@ -53,8 +53,16 @@ void Draw_InitLocal (void)
 	if (!draw_chars)
 		ri.Sys_Error (ERR_FATAL, "R1GL: Couldn't load conchars.pcx\n\nEither you aren't running Quake 2 from the correct directory or you are missing important files.");
 	GL_Bind( draw_chars->texnum );
-	qglTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	qglTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	if (FLOAT_NE_ZERO(gl_bilerp_chars->value))
+	{
+		qglTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		qglTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	}
+	else
+	{
+		qglTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		qglTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	}
 }
 
 static float conchars_texoffset[16] =

@@ -194,6 +194,8 @@ cvar_t	*gl_defertext;
 
 cvar_t	*gl_pic_scale;
 
+cvar_t	*gl_bilerp_chars;
+
 //cvar_t	*con_alpha;
 
 vec4_t	colorWhite = {1,1,1,1};
@@ -1425,6 +1427,8 @@ void R_Register( void )
 	vid_topmost = ri.Cvar_Get ("vid_topmost", "0", 0);
 
 	gl_pic_scale = ri.Cvar_Get ("gl_pic_scale", "1", 0);
+
+	gl_bilerp_chars = ri.Cvar_Get ("gl_bilerp_chars", "0", 0);
 	//r1ch end my shit
 
 	gl_drawbuffer = ri.Cvar_Get( "gl_drawbuffer", "GL_BACK", 0 );

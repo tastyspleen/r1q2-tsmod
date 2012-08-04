@@ -302,6 +302,8 @@ extern	cvar_t	*gl_defertext;
 
 extern	cvar_t	*gl_pic_scale;
 
+extern	cvar_t	*gl_bilerp_chars;
+
 extern	cvar_t	*vid_restore_on_switch;
 
 extern int		usingmodifiedlightmaps;
